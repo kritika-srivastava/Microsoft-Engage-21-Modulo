@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Grid, Segment, Icon, Header, Button, Message } from 'semantic-ui-react';
-import './Register.css';
+import '../auth.css';
+import { Link } from 'react-router-dom';
+import firebase from '../../../server/firebase';
 
 const Register = () => {
 
@@ -11,8 +13,15 @@ const Register = () => {
         confirmPassword: ''
     }
     let errors = [];
+
+    let userCollectionRef = firebase.database().ref('users');
+
     const [userState, setuserState] = useState(user);
     const [errorState, seterrorState] = useState(errors);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+
 
     const handleInput = (event) => {
         let target = event.target;
@@ -23,17 +32,18 @@ const Register = () => {
         })
     }
 
+
     const checkForm = () => {
         if (isFormEmpty()) {
             seterrorState((error) => error.concat({ message: "Please fill in all the fields." }));
             return false;
         } else if (!checkPassword()) {
-            seterrorState((error) => error.concat({ message: "Given Password is not Valid." }));
             return false;
         }
 
         return true;
     }
+
 
     const isFormEmpty = () => {
         return !userState.userName.length ||
@@ -42,11 +52,14 @@ const Register = () => {
             !userState.email.length;
     }
 
+
     const checkPassword = () => {
         if (userState.password.length < 8) {
+            seterrorState((error) => error.concat({ message: "The Password length should be greater than 8." }));
             return false;
         }
         else if (userState.password !== userState.confirmPassword) {
+            seterrorState((error) => error.concat({ message: "The Passwords do not match." }));
             return false;
         }
         else {
@@ -54,14 +67,65 @@ const Register = () => {
         }
     }
 
+
     const onSubmit = () => {
         seterrorState(() => []);
+        setIsSuccess(false);
+
         if (checkForm()) {
-
-        } else {
-
+            setIsLoading(true);
+            firebase.auth()
+                .createUserWithEmailAndPassword(userState.email, userState.password)
+                .then(createdUser => {
+                    setIsLoading(false);
+                    updateuserDetails(createdUser);
+                })
+                .catch(serverError => {
+                    setIsLoading(false);
+                    seterrorState((error) => error.concat(serverError));
+                });
         }
     }
+
+
+    const updateuserDetails = (createdUser) => {
+        if (createdUser) {
+            setIsLoading(true);
+
+            createdUser.user
+                .updateProfile({
+                    displayName: userState.userName,
+                    photoURL: `http://gravatar.com/avatar/${createdUser.user.uid}?d=identicon`
+                })
+                .then(() => {
+                    setIsLoading(false);
+                    saveUserInDB(createdUser);
+                })
+                .catch((serverError) => {
+                    setIsLoading(false);
+                    seterrorState((error) => error.concat(serverError));
+
+                })
+        }
+    }
+
+
+    const saveUserInDB = (createdUser) => {
+        setIsLoading(true);
+        userCollectionRef.child(createdUser.user.uid).set({
+            displayName: createdUser.user.displayName,
+            photoURL: createdUser.user.photoURL
+        })
+            .then(() => {
+                setIsLoading(false);
+                setIsSuccess(true);
+            })
+            .catch(serverError => {
+                setIsLoading(false);
+                seterrorState((error) => error.concat(serverError));
+            })
+    }
+
 
     const formaterrors = () => {
         return errorState.map((error, index) => <p key={index}>{error.message}</p>);
@@ -71,12 +135,20 @@ const Register = () => {
     return <Grid verticalAlign="middle" textAlign="center" className="grid-form">
         <Grid.Column style={{ maxWidth: '600px' }}>
             <Header icon>
-                <Icon name="wechat" >  modulo</Icon>
-
+                <Icon name="blue wechat" >  modulo</Icon>
                 Register
             </Header>
             <Form onSubmit={onSubmit}>
                 <Segment stacked>
+                    <Form.Input
+                        name="userName"
+                        value={userState.userName}
+                        icon="user"
+                        iconPosition="left"
+                        onChange={handleInput}
+                        type="text"
+                        placeholder="UserName"
+                    />
                     <Form.Input
                         name="email"
                         value={userState.email}
@@ -92,8 +164,9 @@ const Register = () => {
                         icon="lock"
                         iconPosition="left"
                         onChange={handleInput}
-                        type="text"
+                        type="password"
                         placeholder="Password"
+
                     />
                     <Form.Input
                         name="confirmPassword"
@@ -101,20 +174,12 @@ const Register = () => {
                         icon="lock"
                         iconPosition="left"
                         onChange={handleInput}
-                        type="text"
+                        type="password"
                         placeholder="Confirm Password"
                     />
-                    <Form.Input
-                        name="userName"
-                        value={userState.userName}
-                        icon="user"
-                        iconPosition="left"
-                        onChange={handleInput}
-                        type="text"
-                        placeholder="UserName"
-                    />
+
                 </Segment>
-                <Button className="ui red button">Submit</Button>
+                <Button disabled={isLoading} loading={isLoading} className="ui red button">Submit</Button>
             </Form>
             {errorState.length > 0 && <Message error>
                 <h3>Errors</h3>
@@ -122,6 +187,15 @@ const Register = () => {
 
             </Message>
             }
+            {isSuccess > 0 && <Message success>
+                <h3>Successfully Registered</h3>
+
+
+            </Message>
+            }
+            <Message>
+                Already a User? <Link to="/login">Login</Link>
+            </Message>
         </Grid.Column>
     </Grid>
 

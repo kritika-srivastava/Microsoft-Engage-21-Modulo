@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from './components/auth/Register/Register';
-import Login from './components/Login/Login';
+import Login from './components/auth/Login/Login';
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
