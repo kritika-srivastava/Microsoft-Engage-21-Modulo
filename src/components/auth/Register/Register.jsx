@@ -134,8 +134,8 @@ const Register = () => {
 
     return <Grid verticalAlign="middle" textAlign="center" className="grid-form">
         <Grid.Column style={{ maxWidth: '600px' }}>
-            <Header icon>
-                <Icon name="blue wechat" >  modulo</Icon>
+            <Header icon as="h2">
+                <Icon name="green wechat" ><div style={{color:'black'}}>  modulo</div></Icon>
                 Register
             </Header>
             <Form onSubmit={onSubmit}>
