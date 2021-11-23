@@ -10,7 +10,7 @@ import './messages.css';
 const Messages = (props) => {
 
     const messageRef = firebase.database().ref('messages');
-
+    const [SearchTermState, setSearchTermState] = useState("");
     const [messageState, setMessageState] = useState([]);
 
     useEffect(() => {
@@ -32,14 +32,43 @@ const Messages = (props) => {
 
 
     const displayMessages = () => {
-        if (messageState.length > 0) {
-            return messageState.map((message) => {
+        let messagesToDisplay = SearchTermState ? filterMessageBySearchTerm() : messageState;
+        if (messagesToDisplay.length > 0) {
+            return messagesToDisplay.map((message) => {
                 return <MessageContent ownMessage={message.user.id === props.user.uid} key={message.timestamp} message={message} />
             })
         }
 
     }
-    return <div><MessageHeader />
+    const uniqueUsersCount = () => {
+        const uniqueUsers = messageState.reduce((acc, message) => {
+            if (!acc.includes(message.user.name)) {
+                acc.push(message.user.name);
+            }
+            return acc;
+        }, []);
+
+        return uniqueUsers.length;
+    }
+
+    const searchTermChange = (e) => {
+        const target = e.target;
+        setSearchTermState(target.value);
+
+    }
+
+    const filterMessageBySearchTerm = () => {
+        const regex = new RegExp(SearchTermState, 'gi');
+        const messages = messageState.reduce((acc, message) => {
+            if ((message.content && message.content.match(regex)) || message.user.name.match(regex)) {
+                acc.push(message);
+            }
+            return acc;
+        }, []);
+        return messages;
+    }
+
+    return <div><MessageHeader searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueUsersCount()} />
         <Segment className="msg_content">
             <Comment.Group>
                 {displayMessages()}

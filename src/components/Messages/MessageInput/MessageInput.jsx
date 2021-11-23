@@ -41,6 +41,11 @@ const MessageInput = (props) => {
         setMessageState(target.value);
     }
 
+    const handleSubmitKey = (target) => {
+        if (target.charCode == 13) {
+            sendMessage();
+        }
+    }
     const createActionButtons = () => {
         return <>
             <Button icon="green send" onClick={() => { sendMessage() }} />
@@ -68,6 +73,7 @@ const MessageInput = (props) => {
 
     return <Segment>
         <Input
+            onKeyPress={handleSubmitKey}
             onChange={onMessageChange}
             fluid={true}
             name="message"
