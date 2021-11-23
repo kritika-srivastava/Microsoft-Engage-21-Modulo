@@ -67,7 +67,7 @@ const Login = () => {
     return <Grid verticalAlign="middle" textAlign="center" className="grid-form">
         <Grid.Column style={{ maxWidth: '600px' }}>
             <Header icon as="h2">
-                <Icon name="green wechat" ><div style={{ color: 'black' }}>  modulo</div></Icon>
+                <Icon name="green wechat" ><div style={{ color: 'black' }} id="fonts">  modulo</div></Icon>
                 Login
             </Header>
             <Form onSubmit={onSubmit}>

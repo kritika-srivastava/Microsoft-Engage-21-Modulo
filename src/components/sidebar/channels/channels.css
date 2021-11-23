@@ -1,0 +1,12 @@
+.channel{
+    padding-top: 0.1rem;
+    color:#82fc52 !important ;
+
+}
+.clickable{
+    color:#82fc52 !important ;
+}
+.clickable:hover{
+    
+    cursor:pointer;
+}
