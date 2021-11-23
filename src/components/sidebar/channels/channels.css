@@ -3,10 +3,19 @@
     color:#82fc52 !important ;
 
 }
+.channel_items{
+    padding-top: 0.1rem;
+    color:#0bb9ab !important ;
+}
 .clickable{
     color:#82fc52 !important ;
 }
 .clickable:hover{
     
     cursor:pointer;
+}
+
+.channel_items.active{
+    color:#0ae4d2 !important;
+    background:#0a44a8 !important;
 }

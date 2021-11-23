@@ -1,18 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Menu, Icon, Modal, Button, Form, Segment, Message } from 'semantic-ui-react';
 import './channels.css';
 import firebase from '../../../server/firebase';
+import { setChannel } from "../../../actions/actioncreator";
+
+
+
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
     const [channelAddState, setChannelAddState] = useState({ name: '', description: '' });
     const [isLoadingState, setisLoadingState] = useState(false);
+    const [ChannelIsState, setChannelIsState] = useState([]);
 
 
     const channelsRef = firebase.database().ref("channels");
 
+    useEffect(() => {
+        channelsRef.on('child_added', (snap) => {
 
+            setChannelIsState((currentState) => {
+                let updatedState = [...currentState];
+                updatedState.push(snap.val());
 
+                return updatedState;
+            })
+        });
+
+        return () => channelsRef.off();
+    }, [])
+    useEffect(() => {
+        if (ChannelIsState.length > 0) {
+            props.selectChannel(ChannelIsState[0])
+        }
+    }, [!props.channel ? ChannelIsState : null])
     const openModal = () => {
         setModalOpenState(true);
     }
@@ -22,6 +43,20 @@ const Channels = (props) => {
     }
     const checkIfFormValid = () => {
         return channelAddState && channelAddState.name && channelAddState.description;
+    }
+
+    const displayChannels = () => {
+        if (ChannelIsState.length > 0) {
+            return ChannelIsState.map((channel) => {
+                return <Menu.Item className="channel_items"
+                    key={channel.id}
+                    name={channel.name}
+                    onClick={() => props.selectChannel(channel)}
+                    active={props.channel && channel.id == props.channel.id}
+                >
+                </Menu.Item>
+            })
+        }
     }
 
     const onSubmit = () => {
@@ -68,14 +103,13 @@ const Channels = (props) => {
 
 
     return <><Menu.Menu className="channel">
-        <Menu.Item>
-            <span className="channel">
-                <Icon name=" yellow exchange" />Channels(0)
+        <Menu.Item className="channel">
+            <span >
+                <Icon name="yellow exchange" />Channels
             </span>
-
-            
+            ({ChannelIsState.length})
         </Menu.Item>
-
+        {displayChannels()}
         <Menu.Item>
             <span className="clickable" onClick={openModal}>
                 <Icon name=" yellow add" />Add Channel
@@ -130,7 +164,14 @@ const Channels = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user.currentUser
+        user: state.user.currentUser,
+        channel: state.channel.currentChannel
     }
 }
-export default connect(mapStateToProps)(Channels);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectChannel: (channel) => dispatch(setChannel(channel))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Channels);
