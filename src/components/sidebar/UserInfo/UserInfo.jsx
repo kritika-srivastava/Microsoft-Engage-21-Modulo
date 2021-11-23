@@ -26,7 +26,7 @@ const UserInfo = (props) => {
                 <Grid.Row className="userinfo_grid_row">
                     <Header inverted as="h2">
                         <Icon name="green wechat" />
-                        <Header.Content className="content">Modulo </Header.Content>
+                        <Header.Content>Modulo </Header.Content>
                     </Header>
                     <Header className="userinfo_displayname" inverted as="h4">
                         <Dropdown
