@@ -8,9 +8,11 @@ import '../channels/channels.css';
 const PrivateChat = (props) => {
 
     const [UsersState, setUsersState] = useState([]);
-
+    const [ConnectedUsersState, setConnectedUsersState] = useState([]);
 
     const usersRef = firebase.database().ref("users");
+    const connectedRef = firebase.database().ref(".info/connected");
+    const statusRef = firebase.database().ref("status");
 
     useEffect(() => {
         usersRef.on('child_added', (snap) => {
@@ -27,9 +29,36 @@ const PrivateChat = (props) => {
                 return updatedState;
             })
         });
+        connectedRef.on("value", snap => {
+            if (props.user && snap.val()) {
+                const userStatusRef = statusRef.child(props.user.uid);
+                userStatusRef.set(true);
+                userStatusRef.onDisconnect().remove();
+            }
+        })
+        return () => { usersRef.off(); connectedRef.off(); }
+    }, [props.user])// eslint-disable-line react-hooks/exhaustive-deps
 
-        return () => usersRef.off();
-    }, [])// eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        statusRef.on("child_added", snap => {
+            setConnectedUsersState((currentState) => {
+                let updatedState = [...currentState];
+                updatedState.push(snap.key);
+                return updatedState;
+            })
+        });
+
+        statusRef.on("child_removed", snap => {
+            setConnectedUsersState((currentState) => {
+                let updatedState = [...currentState];
+                let index = updatedState.indexOf(snap.key);
+                updatedState.splice(index, 1);
+                return updatedState;
+            })
+        });
+
+        return () => statusRef.off();
+    }, [UsersState]);// eslint-disable-line react-hooks/exhaustive-deps
 
 
     const generateChannelID = (userId) => {
@@ -56,6 +85,8 @@ const PrivateChat = (props) => {
                     onClick={() => selectUser(user)}
                     active={props.channel && generateChannelID(user.id) === props.channel.id}
                 >
+                    {ConnectedUsersState.indexOf(user.id) !== -1 ? <Icon name="circle" color="orange" /> : <Icon name="circle outline" color="grey" />
+                    }
                     {"@ " + user.name}
                 </Menu.Item>
             })
