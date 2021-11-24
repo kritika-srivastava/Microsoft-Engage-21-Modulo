@@ -42,7 +42,7 @@ const MessageInput = (props) => {
     }
 
     const handleSubmitKey = (target) => {
-        if (target.charCode == 13) {
+        if (target.charCode === 13) {
             sendMessage();
         }
     }
@@ -55,10 +55,10 @@ const MessageInput = (props) => {
 
     const uploadFile = (file, contentType) => {
         var filePath = ``;
-        if (contentType == "image/jpg") { filePath = `chat/images/${uuidv4()}.jpg`; }
-        else if (contentType == "image/jpeg") { filePath = `chat/images/${uuidv4()}.jpeg`; }
-        else if (contentType == "image/png") { filePath = `chat/images/${uuidv4()}.png`; }
-        else if (contentType == "application/pdf") { filePath = `chat/pdfs/${uuidv4()}.pdf`; }
+        if (contentType === "image/jpg") { filePath = `chat/images/${uuidv4()}.jpg`; }
+        else if (contentType === "image/jpeg") { filePath = `chat/images/${uuidv4()}.jpeg`; }
+        else if (contentType === "image/png") { filePath = `chat/images/${uuidv4()}.png`; }
+        else if (contentType === "application/pdf") { filePath = `chat/pdfs/${uuidv4()}.pdf`; }
 
         storageRef.child(filePath).put(file, { contentType: contentType })
             .then((data) => {

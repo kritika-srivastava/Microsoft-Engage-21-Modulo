@@ -28,9 +28,9 @@ const Index = (props) => {
         props.history.push("/login");
       }
     })
-  }, []);
+  }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
-  console.log("Debug",props.currentUser);
+  console.log("Debug", props.currentUser);
 
   return (
     <Switch>

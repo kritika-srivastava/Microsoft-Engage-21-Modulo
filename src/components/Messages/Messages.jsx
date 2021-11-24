@@ -16,6 +16,8 @@ const Messages = (props) => {
     useEffect(() => {
         if (props.channel) {
             setMessageState([]);
+
+
             messageRef.child(props.channel.id).on('child_added', (snap) => {
                 setMessageState((currentState) => {
                     let updatedState = [...currentState];
@@ -28,14 +30,14 @@ const Messages = (props) => {
 
             return () => messageRef.child(props.channel.id).off();
         }
-    }, [props.channel])
+    }, [props.channel])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     const displayMessages = () => {
         let messagesToDisplay = SearchTermState ? filterMessageBySearchTerm() : messageState;
         if (messagesToDisplay.length > 0) {
             return messagesToDisplay.map((message) => {
-                return <MessageContent ownMessage={message.user.id === props.user.uid} key={message.timestamp} message={message} />
+                return <MessageContent ownMessage={message.user.id === props.user?.uid} key={message.timestamp} message={message} />
             })
         }
 
@@ -68,7 +70,7 @@ const Messages = (props) => {
         return messages;
     }
 
-    return <div><MessageHeader searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueUsersCount()} />
+    return <div><MessageHeader searchTermChange={searchTermChange} isPrivateChat={props.channel?.isPrivateChat} channelName={props.channel?.name} uniqueUsers={uniqueUsersCount()} />
         <Segment className="msg_content">
             <Comment.Group>
                 {displayMessages()}

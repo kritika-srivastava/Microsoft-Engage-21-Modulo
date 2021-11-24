@@ -1,5 +1,5 @@
 import React from "react";
-import { Comment, CommentAuthor, CommentContent, CommentMetadata, Image } from "semantic-ui-react";
+import { Comment, Image } from "semantic-ui-react";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import '../messages.css';
@@ -10,12 +10,6 @@ const timeAgo = new TimeAgo();
 
 const MessageContent = (props) => {
 
-    {
-        const Switch = (str) => ({
-            "Yes": "517",
-            "No": "518",
-        })[str] || '';
-    }
     return <Comment>
         <Comment.Avatar src={props.message.user.avatar} />
         <Comment.Content className={props.ownMessage ? "ownMessage" : null}>

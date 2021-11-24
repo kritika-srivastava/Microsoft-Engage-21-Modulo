@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Menu, Icon, Modal, Button, Form, Segment, Message } from 'semantic-ui-react';
+import { Menu, Icon, Modal, Button, Form, Segment } from 'semantic-ui-react';
 import './channels.css';
 import firebase from '../../../server/firebase';
 import { setChannel } from "../../../actions/actioncreator";
@@ -28,12 +28,14 @@ const Channels = (props) => {
         });
 
         return () => channelsRef.off();
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
+
     useEffect(() => {
         if (ChannelIsState.length > 0) {
             props.selectChannel(ChannelIsState[0])
         }
-    }, [!props.channel ? ChannelIsState : null])
+    }, [!props.channel ? ChannelIsState : null])// eslint-disable-line react-hooks/exhaustive-deps
+
     const openModal = () => {
         setModalOpenState(true);
     }
@@ -52,8 +54,10 @@ const Channels = (props) => {
                     key={channel.id}
                     name={channel.name}
                     onClick={() => props.selectChannel(channel)}
-                    active={props.channel && channel.id == props.channel.id}
+                    active={props.channel && channel.id === props.channel.id}
                 >
+                    {"# " + channel.name}
+
                 </Menu.Item>
             })
         }
@@ -102,8 +106,8 @@ const Channels = (props) => {
 
 
 
-    return <><Menu.Menu className="channel">
-        <Menu.Item className="channel">
+    return <><Menu.Menu className="channel" style={{ marginTop: '15px' }}>
+        <Menu.Item className="channel" style={{ fontSize: '17px' }}>
             <span >
                 <Icon name="yellow exchange" />Channels
             </span>
