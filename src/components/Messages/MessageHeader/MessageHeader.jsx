@@ -8,13 +8,19 @@ const MessageHeader = (props) => {
         <Header floated="left" fluid="true" as="h2" className="win_width">
             <span style={{ color: "#0b1f42" }}>
 
-                {!props.isPrivateChat && <Icon name="green linkify" />}
-                {props.isPrivateChat && <Icon name="red user" />}
-                {(props.isPrivateChat ? "@" : "#") + props.channelName}
+                {!props.isPrivateChat && <Icon
+                    onClick={props.starChange}
+                    name={props.starred ? "star" : "star outline"}
+                    color={props.starred ? "yellow" : "grey"} />}
             </span>
-            <Header.Subheader>
-                {props.uniqueUsers} User{props.uniqueUsers <= 1 ? "" : "s"}
-            </Header.Subheader>
+            {props.isPrivateChat && <Icon name="red user" />}
+            {(props.isPrivateChat ? "@" : "#") + props.channelName}
+
+
+            {!props.isPrivateChat ?
+                <Header.Subheader>{props.uniqueUsers} User{props.uniqueUsers <= 1 ? "" : "s"}</Header.Subheader>
+                : null}
+
         </Header>
 
         <Header floated="right" >

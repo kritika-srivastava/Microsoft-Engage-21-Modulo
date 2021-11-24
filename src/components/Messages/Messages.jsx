@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MessageHeader from './MessageHeader/MessageHeader';
 import MessageContent from './MessageContent/MessageContent';
 import MessageInput from './MessageInput/MessageInput';
+import { setFavouriteChannel, removeFavouriteChannel } from "../../actions/actioncreator";
 import firebase from '../../server/firebase';
 import { connect } from "react-redux";
 import { Comment, Segment } from "semantic-ui-react";
@@ -10,14 +11,13 @@ import './messages.css';
 const Messages = (props) => {
 
     const messageRef = firebase.database().ref('messages');
+    const usersRef = firebase.database().ref('users');
     const [SearchTermState, setSearchTermState] = useState("");
     const [messageState, setMessageState] = useState([]);
 
     useEffect(() => {
         if (props.channel) {
             setMessageState([]);
-
-
             messageRef.child(props.channel.id).on('child_added', (snap) => {
                 setMessageState((currentState) => {
                     let updatedState = [...currentState];
@@ -31,6 +31,23 @@ const Messages = (props) => {
             return () => messageRef.child(props.channel.id).off();
         }
     }, [props.channel])// eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        if (props.user) {
+            usersRef.child(props.user.uid).child("favourite")
+                .on('child_added', (snap) => {
+                    props.setFavouriteChannel(snap.val());
+                })
+
+            usersRef.child(props.user.uid).child("favourite")
+                .on('child_removed', (snap) => {
+                    props.removeFavouriteChannel(snap.val());
+                })
+
+
+            return () => usersRef.child(props.user.uid).child("favourite").off();
+        }
+    }, [props.user])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     const displayMessages = () => {
@@ -70,7 +87,21 @@ const Messages = (props) => {
         return messages;
     }
 
-    return <div><MessageHeader searchTermChange={searchTermChange} isPrivateChat={props.channel?.isPrivateChat} channelName={props.channel?.name} uniqueUsers={uniqueUsersCount()} />
+    const starChange = () => {
+        let favouriteRef = usersRef.child(props.user.uid).child("favourite").child(props.channel.id);
+        if (isStarred()) {
+            favouriteRef.remove();
+        }
+        else {
+            favouriteRef.set({ channelId: props.channel.id, channelName: props.channel.name })
+        }
+    }
+
+    const isStarred = () => {
+        return Object.keys(props.favouriteChannel).includes(props.channel?.id);
+    }
+
+    return <div><MessageHeader starChange={starChange} starred={isStarred()} searchTermChange={searchTermChange} isPrivateChat={props.channel?.isPrivateChat} channelName={props.channel?.name} uniqueUsers={uniqueUsersCount()} />
         <Segment className="msg_content">
             <Comment.Group>
                 {displayMessages()}
@@ -82,7 +113,16 @@ const Messages = (props) => {
 const mapStateToProps = (state) => {
     return {
         channel: state.channel.currentChannel,
-        user: state.user.currentUser
+        user: state.user.currentUser,
+        favouriteChannel: state.favouriteChannel.favouriteChannel
     }
 }
-export default connect(mapStateToProps)(Messages);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setFavouriteChannel: (channel) => dispatch(setFavouriteChannel(channel)),
+        removeFavouriteChannel: (channel) => dispatch(removeFavouriteChannel(channel)),
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);

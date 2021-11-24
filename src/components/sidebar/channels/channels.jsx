@@ -54,7 +54,7 @@ const Channels = (props) => {
                     key={channel.id}
                     name={channel.name}
                     onClick={() => props.selectChannel(channel)}
-                    active={props.channel && channel.id === props.channel.id}
+                    active={props.channel && channel.id === props.channel.id && !props.channel.isFavourite}
                 >
                     {"# " + channel.name}
 
