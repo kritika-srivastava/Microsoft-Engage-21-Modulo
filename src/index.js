@@ -11,7 +11,7 @@ import { Provider, connect } from "react-redux";
 import { createStore } from 'redux';
 import { combinedReducers } from './actions/reducer';
 import { setUser } from './actions/actioncreator';
-
+import { AppLoader } from './components/AppLoader/AppLoader';
 
 
 const store = createStore(combinedReducers)
@@ -33,21 +33,26 @@ const Index = (props) => {
   console.log("Debug", props.currentUser);
 
   return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path='/' component={App} />
-    </Switch>)
+    <>
+    <AppLoader loading={props.loading && props.location.pathname === "/"} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path='/' component={App} />
+      </Switch>
+    </>)
 }
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    loading: state.channel.loading
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     setUser: (user) => { dispatch(setUser(user)) }
+
   }
 }
 

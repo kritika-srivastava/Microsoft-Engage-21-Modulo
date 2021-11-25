@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MessageHeader from './MessageHeader/MessageHeader';
 import MessageContent from './MessageContent/MessageContent';
 import MessageInput from './MessageInput/MessageInput';
@@ -14,6 +14,9 @@ const Messages = (props) => {
     const usersRef = firebase.database().ref('users');
     const [SearchTermState, setSearchTermState] = useState("");
     const [messageState, setMessageState] = useState([]);
+
+    let divRef = useRef();
+
 
     useEffect(() => {
         if (props.channel) {
@@ -50,14 +53,23 @@ const Messages = (props) => {
     }, [props.user])// eslint-disable-line react-hooks/exhaustive-deps
 
 
+    useEffect(() => {
+        divRef.scrollIntoView({ behavior: 'smooth' });
+    }, [messageState])
+
+
     const displayMessages = () => {
         let messagesToDisplay = SearchTermState ? filterMessageBySearchTerm() : messageState;
         if (messagesToDisplay.length > 0) {
             return messagesToDisplay.map((message) => {
-                return <MessageContent ownMessage={message.user.id === props.user?.uid} key={message.timestamp} message={message} />
+                return <MessageContent imageLoaded={imageLoaded} ownMessage={message.user.id === props.user?.uid} key={message.timestamp} message={message} />
             })
         }
 
+    }
+
+    const imageLoaded = () => {
+        divRef.scrollIntoView({ behavior: 'smooth' });
     }
     const uniqueUsersCount = () => {
         const uniqueUsers = messageState.reduce((acc, message) => {
@@ -77,7 +89,7 @@ const Messages = (props) => {
     }
 
     const filterMessageBySearchTerm = () => {
-        const regex = new RegExp(SearchTermState, 'gi');
+        const regex = new RegExp(SearchTermState.replace(/([.?*+^$[\]\\(){}|-])/g, ''), 'gi');
         const messages = messageState.reduce((acc, message) => {
             if ((message.content && message.content.match(regex)) || message.user.name.match(regex)) {
                 acc.push(message);
@@ -105,6 +117,7 @@ const Messages = (props) => {
         <Segment className="msg_content">
             <Comment.Group>
                 {displayMessages()}
+                <div ref={currentEl => divRef = currentEl}></div>
             </Comment.Group>
         </Segment>
         <MessageInput /></div>
