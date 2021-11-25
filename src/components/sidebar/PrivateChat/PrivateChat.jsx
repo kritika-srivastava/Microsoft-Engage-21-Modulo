@@ -4,6 +4,7 @@ import { Menu, Icon } from 'semantic-ui-react';
 import firebase from '../../../server/firebase';
 import { setChannel } from "../../../actions/actioncreator";
 import '../channels/channels.css';
+import { Notification } from "../Notification/Notification";
 
 const PrivateChat = (props) => {
 
@@ -60,7 +61,12 @@ const PrivateChat = (props) => {
         return () => statusRef.off();
     }, [UsersState]);// eslint-disable-line react-hooks/exhaustive-deps
 
+    const setLastVisited = (user, channel) => {
 
+        const lastVisited = usersRef.child(user.uid).child("lastVisited").child(channel.id);
+        lastVisited.set(firebase.database.ServerValue.TIMESTAMP);
+        lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
+    }
     const generateChannelID = (userId) => {
         if (props.user?.uid < userId) {
             return (props.user?.uid + userId);
@@ -73,6 +79,8 @@ const PrivateChat = (props) => {
     const selectUser = (user) => {
         let userTemp = { ...user };
         userTemp.id = generateChannelID(user.id);
+        setLastVisited(props.user, props.channel);
+        setLastVisited(props.user, userTemp);
         props.selectChannel(userTemp);
     }
 
@@ -85,9 +93,12 @@ const PrivateChat = (props) => {
                     onClick={() => selectUser(user)}
                     active={props.channel && generateChannelID(user.id) === props.channel.id}
                 >
-                    {ConnectedUsersState.indexOf(user.id) !== -1 ? <Icon name="circle" color="orange" /> : <Icon name="circle outline" color="grey" />
+                    {ConnectedUsersState.indexOf(user.id) !== -1 ? <Icon name="circle" color="green" /> : <Icon name="circle outline" color="grey" />
                     }
-                    {"@ " + user.name}
+
+                    <Notification user={props.user} channel={props.channel}
+                        notificationChannelId={generateChannelID(user.id)}
+                        displayName={"@ " + user.name} />
                 </Menu.Item>
             })
         }

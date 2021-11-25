@@ -26,7 +26,7 @@ const favouriteChannels = (props) => {
     return <Menu.Menu className="channel" style={{ marginTop: '35px' }}>
         <Menu.Item className="channel" style={{ fontSize: '17px' }}>
             <span >
-                <Icon name="yellow star" />Starred Channels
+                <Icon name="yellow star" />Starred
             </span>
             ({Object.keys(props.favouriteChannels).length})
         </Menu.Item>
