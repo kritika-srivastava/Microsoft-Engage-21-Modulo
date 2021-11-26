@@ -92,10 +92,10 @@ const Login = () => {
                         placeholder="Password"
 
                     />
-
+                    <Button disabled={isLoading} loading={isLoading} className="ui fluid medium orange button">Login</Button>
 
                 </Segment>
-                <Button disabled={isLoading} loading={isLoading} className="ui red button">Login</Button>
+
             </Form>
             {errorState.length > 0 && <Message error>
                 <h3>Errors</h3>

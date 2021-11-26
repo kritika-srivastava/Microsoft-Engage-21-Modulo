@@ -135,7 +135,7 @@ const Register = () => {
     return <Grid verticalAlign="middle" textAlign="center" className="grid-form">
         <Grid.Column style={{ maxWidth: '600px' }}>
             <Header icon as="h2">
-                <Icon name="green wechat" ><div style={{color:'black'}}>  modulo</div></Icon>
+                <Icon name="green wechat" ><div style={{ color: 'black' }}>  modulo</div></Icon>
                 Register
             </Header>
             <Form onSubmit={onSubmit}>
@@ -177,9 +177,9 @@ const Register = () => {
                         type="password"
                         placeholder="Confirm Password"
                     />
-
+                    <Button disabled={isLoading} loading={isLoading} className="ui fluid medium orange button">Submit</Button>
                 </Segment>
-                <Button disabled={isLoading} loading={isLoading} className="ui red button">Submit</Button>
+
             </Form>
             {errorState.length > 0 && <Message error>
                 <h3>Errors</h3>

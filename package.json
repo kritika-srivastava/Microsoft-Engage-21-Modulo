@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "dom": "0.0.3",
     "firebase": "^7.19.0",
+    "firebase-tools": "^9.23.0",
     "history": "^5.1.0",
     "javascript-time-ago": "^2.3.10",
     "mime-type": "^4.0.0",

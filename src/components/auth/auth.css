@@ -1,7 +1,16 @@
+body #root{
+  font-family: 'Estonia', cursive;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Padauk', sans-serif;
+  font-family: 'Roboto Slab', serif;
+}
 .grid-form{
-    padding: 1rem;
-    height:100vh;
-    background: linear-gradient(rgb(132, 218, 252), #ffffff );
+  
+    padding: 1rem !important;
+    height:100vh !important;
+    background: #caf3c9 !important;
     
   }
   
