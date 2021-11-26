@@ -1,6 +1,6 @@
-.side_bar{
-    background :#051d47 !important ;
-    font-size: 1.2rem !important;
-    overflow-y:scroll;
-    overflow-x: scroll;
+.side_bar {
+  background: #051d47 !important ;
+  font-size: 1.2rem !important;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }

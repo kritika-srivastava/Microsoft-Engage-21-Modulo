@@ -1,59 +1,66 @@
-import { SET_USER, SET_CHANNEL, SET_FAVOURITE_CHANNEL, REMOVE_FAVOURITE_CHANNEL } from './actiontypes';
+import {
+  SET_USER,
+  SET_CHANNEL,
+  SET_FAVOURITE_CHANNEL,
+  REMOVE_FAVOURITE_CHANNEL,
+} from "./actiontypes";
 import { combineReducers } from "redux";
 
 let defaultState = {
-    currentUser: null
-}
+  currentUser: null,
+};
 
 const userReducer = (state = defaultState, action) => {
-    if (action.type === SET_USER) {
-        let payload = action.payload;
-        state = { ...payload };
-        return state;
-    }
+  if (action.type === SET_USER) {
+    let payload = action.payload;
+    state = { ...payload };
     return state;
-}
+  }
+  return state;
+};
 
 let defaultChannelState = {
-    currentChannel: null,
-    loading: true
-}
+  currentChannel: null,
+  loading: true,
+};
 
 const channelReducer = (state = defaultChannelState, action) => {
-    if (action.type === SET_CHANNEL) {
-        let payload = action.payload;
-        state = { ...payload };
-        state.loading = false;
-        return state;
-    }
+  if (action.type === SET_CHANNEL) {
+    let payload = action.payload;
+    state = { ...payload };
+    state.loading = false;
     return state;
-}
+  }
+  return state;
+};
 
 let defaultFavouriteChannelState = {
-    favouriteChannel: {}
+  favouriteChannel: {},
+};
 
-}
+const favouriteChannelReducer = (
+  state = defaultFavouriteChannelState,
+  action
+) => {
+  if (action.type === SET_FAVOURITE_CHANNEL) {
+    let payload = action.payload.favouriteChannel;
+    let updatedState = { ...state.favouriteChannel };
+    updatedState[payload.channelId] = payload.channelName;
 
-const favouriteChannelReducer = (state = defaultFavouriteChannelState, action) => {
-    if (action.type === SET_FAVOURITE_CHANNEL) {
-        let payload = action.payload.favouriteChannel;
-        let updatedState = { ...state.favouriteChannel };
-        updatedState[payload.channelId] = payload.channelName;
+    return { favouriteChannel: updatedState };
+  } else if (action.type === REMOVE_FAVOURITE_CHANNEL) {
+    let payload = action.payload.favouriteChannel;
+    let updatedState = { ...state.favouriteChannel };
+    delete updatedState[payload.channelId];
 
-        return { favouriteChannel: updatedState };
-    }
+    return { favouriteChannel: updatedState };
+  }
 
-    else if (action.type === REMOVE_FAVOURITE_CHANNEL) {
-        let payload = action.payload.favouriteChannel;
-        let updatedState = { ...state.favouriteChannel };
-        delete updatedState[payload.channelId];
+  return state;
+};
 
-        return { favouriteChannel: updatedState };
-    }
-
-    return state;
-}
-
-
-
-export const combinedReducers = combineReducers({ user: userReducer, channel: channelReducer, favouriteChannel: favouriteChannelReducer })
+export const combinedReducers = combineReducers({
+  user: userReducer,
+  channel: channelReducer,
+  favouriteChannel: favouriteChannelReducer,
+});

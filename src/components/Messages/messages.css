@@ -1,10 +1,9 @@
-.msg_content{
-    height: 35rem;
-    overflow-y:scroll;
+.msg_content {
+  height: 35rem;
+  overflow-y: scroll;
 }
 
-.ownMessage{
-    border-left: 4px solid orange;
-    padding-left:6px;
-    
+.ownMessage {
+  border-left: 4px solid orange;
+  padding-left: 6px;
 }

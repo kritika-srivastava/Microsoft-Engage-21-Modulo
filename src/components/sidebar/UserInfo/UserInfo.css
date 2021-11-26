@@ -1,12 +1,12 @@
-.userinfo_grid_row{
-    padding-top: 1.25rem;
-    padding-left:1.5rem;
-    padding-bottom: 0rem;
+.userinfo_grid_row {
+  padding-top: 1.25rem;
+  padding-left: 1.5rem;
+  padding-bottom: 0rem;
 }
-.userinfo_displayname{
-    padding-left: 1.1em !important; 
-    color:#48b11f !important ;
+.userinfo_displayname {
+  padding-left: 1.1em !important;
+  color: #48b11f !important ;
 }
-.content{
-    color:#6aca44 !important ;
+.content {
+  color: #6aca44 !important ;
 }

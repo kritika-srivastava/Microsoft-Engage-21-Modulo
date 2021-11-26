@@ -1,8 +1,7 @@
-.messagepanel{
-    padding-left: 320px !important;
+.messagepanel {
+  padding-left: 320px !important;
 }
-.msg_header{
-    padding-top: 20px !important;
-    min-width: 300px !important;
-   
+.msg_header {
+  padding-top: 20px !important;
+  min-width: 300px !important;
 }
