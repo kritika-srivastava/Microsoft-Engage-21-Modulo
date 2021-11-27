@@ -9,5 +9,5 @@ body #root {
 .grid-form {
   padding: 1rem !important;
   height: 100vh !important;
-  background: #caf3c9 !important;
+  background: linear-gradient(90deg,#051d47,#b8f8fa ,#051d47) !important;
 }

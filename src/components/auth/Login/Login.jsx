@@ -75,9 +75,9 @@ const Login = () => {
   return (
     <Grid verticalAlign="middle" textAlign="center" className="grid-form">
       <Grid.Column style={{ maxWidth: "600px" }}>
-        <Header icon as="h2">
+        <Header icon as="h2" style={{ color: "#0d254d" }}>
           <Icon name="green wechat">
-            <div style={{ color: "black" }} id="fonts">
+            <div style={{ color: "#0d254d" }} id="fonts">
               {" "}
               modulo
             </div>
@@ -107,7 +107,7 @@ const Login = () => {
             <Button
               disabled={isLoading}
               loading={isLoading}
-              className="ui fluid medium orange button"
+              className="ui fluid medium red button"
             >
               Login
             </Button>

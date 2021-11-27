@@ -1,0 +1,96 @@
+[debug] [2021-11-27T15:54:53.138Z] ----------------------------------------------------------------------
+[debug] [2021-11-27T15:54:53.139Z] Command:       /usr/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-11-27T15:54:53.140Z] CLI Version:   9.23.0
+[debug] [2021-11-27T15:54:53.140Z] Platform:      linux
+[debug] [2021-11-27T15:54:53.140Z] Node Version:  v10.19.0
+[debug] [2021-11-27T15:54:53.140Z] Time:          Sat Nov 27 2021 21:24:53 GMT+0530 (India Standard Time)
+[debug] [2021-11-27T15:54:53.140Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-27T15:54:53.190Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-27T15:54:53.190Z] > authorizing via signed-in user (kritika.s1408@gmail.com)
+[debug] [2021-11-27T15:54:53.190Z] [iam] checking project modulo-dd1f4 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-11-27T15:54:53.192Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-27T15:54:53.192Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-27T15:54:53.655Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Sat, 27 Nov 2021 15:54:56 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:54:53.839Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/modulo-dd1f4:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-11-27T15:54:55.817Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Nov 2021 15:54:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1443","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:54:55.821Z] > refreshing access token with scopes: []
+[debug] [2021-11-27T15:54:55.821Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-27T15:54:56.156Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 27 Nov 2021 15:54:59 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:54:56.386Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/modulo-dd1f4 [none]
+[debug] [2021-11-27T15:54:57.259Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/modulo-dd1f4 200
+[debug] [2021-11-27T15:54:57.259Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/modulo-dd1f4 {"projectId":"modulo-dd1f4","projectNumber":"299719871334","displayName":"modulo","name":"projects/modulo-dd1f4","resources":{"hostingSite":"modulo-dd1f4","realtimeDatabaseInstance":"modulo-dd1f4-default-rtdb","storageBucket":"modulo-dd1f4.appspot.com","locationId":"us-east1"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'modulo-dd1f4'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-11-27T15:54:57.266Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-27T15:54:57.267Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-27T15:54:57.615Z] <<< HTTP RESPONSE 200 {"date":"Sat, 27 Nov 2021 15:55:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:54:58.250Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-11-27T15:55:00.422Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Nov 2021 15:55:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[modulo-dd1f4]: beginning deploy... 
+[info] i  hosting[modulo-dd1f4]: found 1 files in build 
+[debug] [2021-11-27T15:55:00.431Z] [hosting] hash cache [YnVpbGQ] not populated
+[debug] [2021-11-27T15:55:00.437Z] > refreshing access token with scopes: []
+[debug] [2021-11-27T15:55:00.437Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-27T15:55:00.439Z] [hosting] hash cache [YnVpbGQ] stored for 1 files
+[debug] [2021-11-27T15:55:00.439Z] [hosting][hash queue][FINAL] {"max":5,"min":5,"avg":5,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":7}
+[debug] [2021-11-27T15:55:00.764Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Sat, 27 Nov 2021 15:55:04 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:55:00.891Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions/aef27d4dfc2debe4:populateFiles [none]
+[debug] [2021-11-27T15:55:00.892Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions/aef27d4dfc2debe4:populateFiles {"files":{"/index.html":"3d6824e26b09fa3ff6bb5ce62b29776471a0e4ece374c2ead903b6fa0f3e8b32"}}
+[debug] [2021-11-27T15:55:02.882Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions/aef27d4dfc2debe4:populateFiles 200
+[debug] [2021-11-27T15:55:02.883Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions/aef27d4dfc2debe4:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/modulo-dd1f4/versions/aef27d4dfc2debe4/files"}
+[debug] [2021-11-27T15:55:02.883Z] [hosting][populate queue][FINAL] {"max":2446,"min":2446,"avg":2446,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2446}
+[debug] [2021-11-27T15:55:02.884Z] [hosting] uploads queued: 0
+[debug] [2021-11-27T15:55:02.884Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1638028502884}
+[info] ✔  hosting[modulo-dd1f4]: file upload complete 
+[debug] [2021-11-27T15:55:02.885Z] [hosting] deploy completed after 2460ms
+[debug] [2021-11-27T15:55:02.890Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "modulo-dd1f4"
+    },
+    "site": "modulo-dd1f4",
+    "version": "sites/modulo-dd1f4/versions/aef27d4dfc2debe4"
+  }
+]
+[info] i  hosting[modulo-dd1f4]: finalizing version... 
+[debug] [2021-11-27T15:55:02.891Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-27T15:55:02.892Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-27T15:55:03.233Z] <<< HTTP RESPONSE 200 {"date":"Sat, 27 Nov 2021 15:55:06 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:55:03.833Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/versions/aef27d4dfc2debe4?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-11-27T15:55:05.846Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Nov 2021 15:55:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:55:05.847Z] [hosting] finalized version for modulo-dd1f4: {"name":"sites/modulo-dd1f4/versions/aef27d4dfc2debe4","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-11-27T15:55:03.452761Z","createUser":{"email":"kritika.s1408@gmail.com"},"finalizeTime":"2021-11-27T15:55:09.014006Z","finalizeUser":{"email":"kritika.s1408@gmail.com"}}
+[info] ✔  hosting[modulo-dd1f4]: version finalized 
+[info] i  hosting[modulo-dd1f4]: releasing new version... 
+[debug] [2021-11-27T15:55:05.849Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/modulo-dd1f4/releases?version_name=sites/modulo-dd1f4/versions/aef27d4dfc2debe4  
+ {"message":null}
+[debug] [2021-11-27T15:55:07.894Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 27 Nov 2021 15:55:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-27T15:55:07.894Z] [hosting] release: {"name":"sites/modulo-dd1f4/releases/1638028510439901","version":{"name":"sites/modulo-dd1f4/versions/aef27d4dfc2debe4","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-11-27T15:55:03.452761Z","createUser":{"email":"kritika.s1408@gmail.com"},"finalizeTime":"2021-11-27T15:55:09.014006Z","finalizeUser":{"email":"kritika.s1408@gmail.com"}},"type":"DEPLOY","releaseTime":"2021-11-27T15:55:10.439901537Z","releaseUser":{"email":"kritika.s1408@gmail.com"}}
+[info] ✔  hosting[modulo-dd1f4]: release complete 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/modulo-dd1f4/overview
+[info] Hosting URL: https://modulo-dd1f4.web.app

@@ -1,13 +1,13 @@
 .channel {
   padding-top: 0.1rem;
-  color: #82fc52 !important ;
+  color: #fafafa !important ;
 }
 .channel_items {
   padding-top: 0.1rem;
-  color: #0bb9ab !important ;
+  color: #d2f3f0 !important ;
 }
 .clickable {
-  color: #82fc52 !important ;
+  color: #ffffff !important ;
 }
 .clickable:hover {
   cursor: pointer;

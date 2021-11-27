@@ -146,9 +146,9 @@ const Register = () => {
   return (
     <Grid verticalAlign="middle" textAlign="center" className="grid-form">
       <Grid.Column style={{ maxWidth: "600px" }}>
-        <Header icon as="h2">
+        <Header icon as="h2"style={{ color: "#0d254d" }}>
           <Icon name="green wechat">
-            <div style={{ color: "black" }}> modulo</div>
+            <div style={{ color: "#0d254d" }}> modulo</div>
           </Icon>
           Register
         </Header>
@@ -193,7 +193,7 @@ const Register = () => {
             <Button
               disabled={isLoading}
               loading={isLoading}
-              className="ui fluid medium orange button"
+              className="ui fluid medium red button"
             >
               Submit
             </Button>
