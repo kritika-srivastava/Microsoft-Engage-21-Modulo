@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Modulo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Modulo is an online chat forum that gives teachers and students a standard platform to have meaningful conversations. It helps the students to engage with their peers virtually.
 
-## Available Scripts
+````bash
+> Microsoft Engage-21 Project Submission
+> App Name: modulo
+> Created by: Kritika Srivastava
+> Email: kritika.s1408@gmail.com
+````
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+1. React.js 
+2. Firebase
+3. Redux
+4. HTML
+5. CSS
+6. Semantic-Ui (frontend templates)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img align="left" height="50px" src="https://icons-for-free.com/iconfiles/png/512/design+development+facebook+framework+mobile+react+icon-1320165723839064798.png" alt="image" />
 
-### `npm test`
+<img align="left" height="50px" src="https://firebase.google.com/images/brand-guidelines/logo-vertical.png" alt="image" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img align="left" height="50px" src="https://cdn.iconscout.com/icon/free/png-256/redux-283024.png" alt="image" />
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img align="left" height="50px" src="https://cdn-icons-png.flaticon.com/512/919/919827.png" alt="image" />
+<img  align="left" height="50px" src="https://icon-library.com/images/css-icon-png/css-icon-png-0.jpg" alt="image" />
+<img  height="50px" src="https://cdn.worldvectorlogo.com/logos/semantic-ui.svg" alt="image" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Video Demo:
 
-### `npm run eject`
+[Access the video demonstration here.](https://youtu.be/GwnlF9DFUUU)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Features
+### 1. Easy registeration and login.
+Users can easily register for the application and login using their credentials.
+### 2. Creating channels.
+Every user is authorised to create their own channel. The messages and files in the channels are accessible to all the users(including messages sent before registration).
+#### 3. Private chatting with all the users.
+modulo enables the users to have one-on-one private communication.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 4. Searching messages using keywords.
+In order to search messages in a channel or in private messages, all you have to do is enter the keyword present in the message.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 5. Starring Channels
+Users can add the favourite channels to the starred list for easy accessibility.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 6. Notifications for new text messages when logging in.
+Users need not worry about the messages after logging out. There will be notifications once you login again in the website.
 
-## Learn More
+#### 7. File uploads (jpg,jpeg,png, pdf files supported).
+#### 8. Emoji support for text messages.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Building from Source
+1. Clone this repository.
+2. Create a firebase project.
+3. Replace the configuration codes in src/server/firebase.js.
+4. Enable storage and realtime database in firebase console.
+5. Install the packages using `npm install` command.
+6. Run the app locally using `npm start` command.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Repository Structure
+````bash
+modulo
+├── firebase.json
+├── package.json
+├── package-lock.json
+├── public
+│   ├── 4846450.png
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+└── src
+    ├── actions
+    │   ├── actioncreator.js
+    │   ├── actiontypes.js
+    │   └── reducer.js
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── components
+    │   ├── AppLoader
+    │   │   ├── AppLoader.css
+    │   │   └── AppLoader.jsx
+    │   ├── auth
+    │   │   ├── auth.css
+    │   │   ├── Login
+    │   │   │   └── Login.jsx
+    │   │   └── Register
+    │   │       └── Register.jsx
+    │   ├── Messages
+    │   │   ├── FileUpload
+    │   │   │   └── FileUpload.jsx
+    │   │   ├── MessageContent
+    │   │   │   └── MessageContent.jsx
+    │   │   ├── MessageHeader
+    │   │   │   └── MessageHeader.jsx
+    │   │   ├── MessageInput
+    │   │   │   └── MessageInput.jsx
+    │   │   ├── messages.css
+    │   │   └── Messages.jsx
+    │   └── sidebar
+    │       ├── channels
+    │       │   ├── channels.css
+    │       │   └── channels.jsx
+    │       ├── favouriteChannels
+    │       │   └── FavouriteChannels.jsx
+    │       ├── Notification
+    │       │   └── Notification.jsx
+    │       ├── PrivateChat
+    │       │   └── PrivateChat.jsx
+    │       ├── sidebar.css
+    │       ├── Sidebar.jsx
+    │       └── UserInfo
+    │           ├── UserInfo.css
+    │           └── UserInfo.jsx
+    ├── index.js
+    ├── logo.svg
+    ├── reportWebVitals.js
+    ├── server
+    │   └── firebase.js
+    └── setupTests.js
+````
 
-### Code Splitting
+## Features for Future updates
+1. Private channels with invited members
+2. Submission channels 
+3. Banning users for some time in channels
+4. Email authentication with OAuth
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+References:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. [React](https://reactjs.org/docs/getting-started.html)
+2. [Firebase](https://firebase.google.com/docs?gclid=Cj0KCQiA7oyNBhDiARIsADtGRZb0hOGHVmG2-yh5mJUb1xW73wEfZde1c-Qti04YSkIC8CAELT1ay9IaAvy6EALw_wcB&gclsrc=aw.ds)
