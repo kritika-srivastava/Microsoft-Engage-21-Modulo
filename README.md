@@ -56,7 +56,7 @@ Users need not worry about the messages after logging out. There will be notific
 #### 7. File uploads (jpg,jpeg,png, pdf files supported).
 #### 8. Emoji support for text messages.
 
-## Building frhttps://modulo-dd1f4.web.app/om Source
+## Building from Source
 1. Clone this repository.
 2. Create a firebase project.
 3. Replace the configuration codes in src/server/firebase.js.
