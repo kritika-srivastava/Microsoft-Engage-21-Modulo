@@ -8,6 +8,11 @@ Modulo is an online chat forum that gives teachers and students a standard platf
 > Created by: Kritika Srivastava
 > Email: kritika.s1408@gmail.com
 ````
+## Live Website link:  
+[https://modulo-dd1f4.web.app/](https://modulo-dd1f4.web.app/)
+## Video Demo:
+
+[Access the video demonstration here.](https://youtu.be/GwnlF9DFUUU)
 
 ## Tech Stack
 
@@ -30,11 +35,6 @@ Modulo is an online chat forum that gives teachers and students a standard platf
 <img  align="left" height="50px" src="https://icon-library.com/images/css-icon-png/css-icon-png-0.jpg" alt="image" />
 <img  height="50px" src="https://cdn.worldvectorlogo.com/logos/semantic-ui.svg" alt="image" />
 
-
-## Video Demo:
-
-[Access the video demonstration here.](https://youtu.be/GwnlF9DFUUU)
-
 ## Features
 ### 1. Easy registeration and login.
 Users can easily register for the application and login using their credentials.
@@ -55,7 +55,7 @@ Users need not worry about the messages after logging out. There will be notific
 #### 7. File uploads (jpg,jpeg,png, pdf files supported).
 #### 8. Emoji support for text messages.
 
-## Building from Source
+## Building frhttps://modulo-dd1f4.web.app/om Source
 1. Clone this repository.
 2. Create a firebase project.
 3. Replace the configuration codes in src/server/firebase.js.
@@ -135,7 +135,7 @@ modulo
 4. Email authentication with OAuth
 
 
-References:
+## References:
 
 1. [React](https://reactjs.org/docs/getting-started.html)
 2. [Firebase](https://firebase.google.com/docs?gclid=Cj0KCQiA7oyNBhDiARIsADtGRZb0hOGHVmG2-yh5mJUb1xW73wEfZde1c-Qti04YSkIC8CAELT1ay9IaAvy6EALw_wcB&gclsrc=aw.ds)
