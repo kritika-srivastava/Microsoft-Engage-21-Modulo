@@ -8,13 +8,15 @@ Modulo is an online chat forum that gives teachers and students a standard platf
 > Created by: Kritika Srivastava
 > Email: kritika.s1408@gmail.com
 ````
-<img align="left" height="50px" src="https://github.com/kritika-srivastava/modulo/blob/main/image.png" alt="image" />
 
 ## Live Website link:  
 [https://modulo-dd1f4.web.app/](https://modulo-dd1f4.web.app/)
 ## Video Demo:
 
 [Access the video demonstration here.](https://youtu.be/GwnlF9DFUUU)
+
+## Screenshots:
+<img align="center" src="https://github.com/kritika-srivastava/modulo/blob/main/image.png" alt="image" />
 
 ## Tech Stack
 
